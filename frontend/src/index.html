@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="../dist/output.css" rel="stylesheet" />
   </head>
-  <body>
+  <body class="relative">
     <!-- navbar -->
     <nav
-      class="flex items-center justify-between p-8 px-20 gap-8 shadow-xl sticky"
+      class="flex items-center border-b top-0 bg-white justify-between p-8 px-20 gap-8 sticky z-10"
     >
       <div
         class="grid grid-cols-[48px_auto] grid-rows-[2fr_1fr] h-[48px] gap-x-2 w-80"
@@ -26,22 +26,53 @@
       <input
         class="w-full h-14 rounded-xl px-4 border border-solid border-gray-300 placeholder:font-medium placeholder:text-gray-300"
         type="search"
-        placeholder="Search by name"
+        placeholder="Search by label"
       />
       <button
-        class="bg-green-500 min-w-fit text-white font-bold p-4 rounded-2xl shadow-md hover:bg-green-400 active:bg-green-500 active:shadow-none"
+        class="bg-green-500 min-w-fit text-white font-bold p-4 rounded-2xl shadow-md active:bg-green-600 active:shadow-none"
       >
         Add a photo
       </button>
     </nav>
-    <!-- contents -->
-    <section class="columns-3 gap-8 overflow-scroll mt-16 px-20">
-      <div class="h-48 bg-gray-400 rounded-2xl relative box-border"></div>
-      <div class="h-96 bg-gray-400 rounded-2xl relative box-border"></div>
-      <div class="h-48 bg-gray-400 rounded-2xl relative box-border"></div>
-      <div class="h-48 bg-gray-400 rounded-2xl relative box-border"></div>
-      <div class="h-96 bg-gray-400 rounded-2xl relative box-border"></div>
-      <div class="h-48 bg-gray-400 rounded-2xl relative box-border"></div>
+    <!-- CONTENTS -->
+    <section id="contents" class="md:columns-3 lg:columns-4 my-16 px-20 gap-6">
+      <!-- Contents here -->
     </section>
+
+    <!-- Add new photo popup -->
+    <div class="absolute z-20 top-0 w-screen h-full bg-black/50">
+      <div class="absolute top-24 w-96 p-8 bg-white rounded-xl shadow-xl">
+        <h3 class="text-xl font-medium mb-4">Add a new photo</h3>
+        <label for="label-input" class="text-sm font-medium">Label </label>
+        <input
+          id="label-input"
+          class="w-full border border-black p-3 rounded-lg mt-2 mb-4 placeholder:text-sm placeholder:text-gray-400"
+          type="text"
+          placeholder="Input label here"
+        />
+        <label for="label-input" class="text-sm font-medium">Photo URL </label>
+        <input
+          id="label-input"
+          class="w-full border border-black p-3 rounded-lg mt-2 mb-4 placeholder:text-sm placeholder:text-gray-400"
+          type="text"
+          placeholder="https://images.unsplash.com/photo-1684514570779-24e264a337a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxN3x8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+        />
+        <div class="flex justify-end gap-2">
+          <button
+            id="cancel-button"
+            class="min-w-fit text-gray-400 font-bold p-3 rounded-xl active:bg-green-600 active:shadow-none"
+          >
+            Cancel
+          </button>
+          <button
+            id="submit-button"
+            class="bg-green-500 min-w-fit text-white font-bold p-3 rounded-xl shadow-md active:bg-green-600 active:shadow-none"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="./index.js"></script>
   </body>
 </html>
