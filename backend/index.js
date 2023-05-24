@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 express.json();
 
-app.use("/api", routes);
+app.use("/", routes);
 app.listen(port, () => {
   console.log(`Server Started at ${port}`);
 });
