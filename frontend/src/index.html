@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="../dist/output.css" rel="stylesheet" />
   </head>
-  <body class="relative">
+  <body class="relative h-full">
     <!-- navbar -->
     <nav
       class="flex items-center border-b top-0 bg-white justify-between p-8 px-20 gap-8 sticky z-10"
@@ -29,6 +29,7 @@
         placeholder="Search by label"
       />
       <button
+        id="add-photo-button"
         class="bg-green-500 min-w-fit text-white font-bold p-4 rounded-2xl shadow-md active:bg-green-600 active:shadow-none"
       >
         Add a photo
@@ -40,9 +41,12 @@
     </section>
 
     <!-- Add new photo popup -->
-    <div class="absolute z-20 top-0 w-screen h-full bg-black/50">
+    <div
+      id="new-photo-form"
+      class="hidden z-20 top-0 w-screen h-[150%] bg-black/50"
+    >
       <div
-        class="sticky top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 p-8 bg-white rounded-xl shadow-xl"
+        class="sticky top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[40%] p-8 bg-white rounded-xl shadow-xl"
       >
         <h3 class="text-xl font-medium mb-4">Add a new photo</h3>
         <label for="label-input" class="text-sm font-medium">Label </label>
@@ -54,7 +58,7 @@
         />
         <label for="label-input" class="text-sm font-medium">Photo URL </label>
         <input
-          id="label-input"
+          id="url-input"
           class="w-full border border-black p-3 rounded-lg mt-2 mb-4 placeholder:text-sm placeholder:text-gray-400"
           type="text"
           placeholder="https://images.unsplash.com/photo-1684514570779-24e264a337a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxN3x8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
@@ -62,7 +66,7 @@
         <div class="flex justify-end gap-2">
           <button
             id="cancel-button"
-            class="min-w-fit text-gray-400 font-bold p-3 rounded-xl active:bg-green-600 active:shadow-none"
+            class="min-w-fit text-gray-400 font-bold p-3"
           >
             Cancel
           </button>

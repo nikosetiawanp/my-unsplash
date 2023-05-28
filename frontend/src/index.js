@@ -2,10 +2,17 @@
 const URL = "http://localhost:3000/images/";
 const contents = document.getElementById("contents");
 
+const addPhotoButton = document.getElementById("add-photo-button");
+const cancelButton = document.getElementById("cancel-button");
+const newPhotoForm = document.getElementById("new-photo-form");
+
+const labelInput = document.getElementById("label-input");
+const urlInput = document.getElementById("url-input");
+const submitButton = document.getElementById("submit-button");
+
 async function renderAll() {
   let response = await fetch(URL);
   let data = await response.json();
-
   for (let i = 0; i < data.length; i++) {
     contents.innerHTML += `
     <div id="${data[i]._id}" class="relative rounded-3xl overflow-hidden bg-black mb-6">
@@ -18,8 +25,37 @@ async function renderAll() {
     `;
   }
 }
-renderAll();
 
-// fetch(URL)
-//   .then((response) => response.json())
-//   .then((data) => console.log(data));
+const submitPhoto = async function () {
+  //   console.log(labelInput.value);
+  console.log(urlInput.value);
+  const response = await fetch(URL, {
+    method: "POST",
+    body: JSON.stringify({
+      label: labelInput.value,
+      url: urlInput.value,
+    }),
+    headers: {
+      "Content-type": "application/json",
+    },
+  });
+
+  if (response.ok) {
+    console.log("Post Success!");
+  } else {
+    alert(response.statusText);
+  }
+};
+
+// Open and close photo form
+const openPhotoForm = function () {
+  newPhotoForm.classList.replace("hidden", "absolute");
+};
+const closePhotoForm = function () {
+  newPhotoForm.classList.replace("absolute", "hidden");
+};
+
+renderAll();
+addPhotoButton.addEventListener("click", openPhotoForm);
+cancelButton.addEventListener("click", closePhotoForm);
+submitButton.addEventListener("click", submitPhoto);
